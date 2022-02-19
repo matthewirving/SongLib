@@ -39,6 +39,8 @@ public class SongLibController {
     @FXML
     private TextField yearField;
     
+    
+    
     public void handleDeleteButton(MouseEvent e) {
     	System.out.println("Deleted!");
     }

@@ -13,7 +13,7 @@ public class SongLib extends Application {
 		
 		// create FXML loader
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/songLib/view/SongLibFXML.fxml"));
+		loader.setLocation(getClass().getResource("/view/SongLibFXML.fxml"));
 		
 		// load fmxl, root layout manager in fxml file is GridPane
 		VBox root = (VBox)loader.load();
@@ -22,6 +22,7 @@ public class SongLib extends Application {
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
+		primaryStage.setTitle("Song Library Application");
 		primaryStage.show();
 	}
 	
