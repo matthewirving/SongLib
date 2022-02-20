@@ -1,3 +1,9 @@
+/*
+	Authors: Matt Irving & Will Knox
+
+
+*/
+
 package util;
 
 import java.util.Comparator;
@@ -37,7 +43,14 @@ public class ListEntry implements Comparable<ListEntry> {
 	
 	public String toString()
 	{
-		return songName + " " + getArtistName() + " " + albumName + " " + albumYear;
+		String temp = songName.trim() + ", " + artistName.trim();
+		if(!albumName.trim().isEmpty()) {
+			temp += ", " + albumName.trim();
+		}
+		if(!albumYear.trim().isEmpty()) {
+			temp += ", " + albumYear.trim();
+		}
+		return temp;
 	}
 	
 	//custom constructor to directly import raw data from CSV
@@ -45,7 +58,7 @@ public class ListEntry implements Comparable<ListEntry> {
 	{
 		String[] temp = inStr.split("\\|");
 		songName = temp[0];
-		setArtistName(temp[1]);
+		artistName = temp[1];
 		albumName = temp[2];
 		albumYear = temp[3];
 	}
@@ -86,12 +99,12 @@ public class ListEntry implements Comparable<ListEntry> {
 	@Override
 	public int compareTo(ListEntry o) {
 		// TODO Auto-generated method stub
-		if(songName.equals(o.getSongName())) {
-			return artistName.compareTo(o.getArtistName());
+		if(songName.trim().equalsIgnoreCase(o.getSongName().trim())) {
+			return artistName.trim().compareToIgnoreCase(o.getArtistName().trim());
 		}
 		else
 		{
-			return songName.compareTo(o.getSongName());
+			return songName.trim().compareToIgnoreCase(o.getSongName().trim());
 		}
 	}
 	

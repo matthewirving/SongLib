@@ -1,8 +1,15 @@
-package application;
+/*
+	Authors: Matt Irving & Will Knox
+
+
+*/
+
+package app;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import view.SongLibController;
@@ -29,6 +36,7 @@ public class SongLib extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
 		primaryStage.setTitle("Song Library Application");
+		primaryStage.getIcons().add(new Image("/assets/note.png"));
 		primaryStage.show();
 	}
 	
