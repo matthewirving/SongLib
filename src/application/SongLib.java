@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import view.SongLibController;
 
 public class SongLib extends Application {
 	
@@ -18,6 +19,11 @@ public class SongLib extends Application {
 		// load fmxl, root layout manager in fxml file is GridPane
 		VBox root = (VBox)loader.load();
 
+		
+		
+		SongLibController songlibController = loader.getController();
+		songlibController.start(primaryStage);
+		
 		// set scene to root
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);

@@ -28,116 +28,76 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-	prefWidth="640.0" xmlns="http://javafx.com/javafx/17"
-	xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SongLibController">
 	<children>
 		<MenuBar VBox.vgrow="NEVER">
 			<menus>
 				<Menu mnemonicParsing="false" text="Help">
 					<items>
-						<MenuItem mnemonicParsing="false"
-							text="About Song Library" />
+						<MenuItem mnemonicParsing="false" text="About Song Library" />
 					</items>
 				</Menu>
 			</menus>
 		</MenuBar>
-		<AnchorPane maxHeight="-1.0" maxWidth="-1.0"
-			prefHeight="464.0" prefWidth="804.0" VBox.vgrow="ALWAYS">
+		<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="464.0" prefWidth="804.0" VBox.vgrow="ALWAYS">
 			<children>
-				<SplitPane dividerPositions="0.5" prefHeight="375.0"
-					prefWidth="640.0">
+				<SplitPane dividerPositions="0.5" prefHeight="375.0" prefWidth="640.0">
 					<items>
-						<AnchorPane minHeight="0.0" minWidth="0.0"
-							prefHeight="373.0" prefWidth="265.0">
+						<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="265.0">
 							<children>
-								<TextField fx:id="searchField" layoutX="5.0"
-									layoutY="2.0" prefHeight="0.0" prefWidth="306.0"
-									promptText="Search..." />
-								<ScrollPane hbarPolicy="NEVER" layoutY="29.0"
-									prefHeight="344.0" prefWidth="316.0">
-									<content>
-										<ListView fx:id="listView" prefHeight="347.0"
-											prefWidth="314.0" />
-									</content>
-								</ScrollPane>
+										<ListView fx:id="listView" onMouseClicked="#handleListSelection" prefHeight="373.0" prefWidth="314.0" />
 							</children>
 						</AnchorPane>
-						<AnchorPane minHeight="0.0" minWidth="0.0"
-							prefHeight="338.0" prefWidth="397.0">
+						<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="338.0" prefWidth="397.0">
 							<children>
-								<SplitPane dividerPositions="0.738544474393531"
-									orientation="VERTICAL" prefHeight="373.0" prefWidth="316.0">
+								<SplitPane dividerPositions="0.738544474393531" orientation="VERTICAL" prefHeight="373.0" prefWidth="316.0">
 									<items>
-										<AnchorPane minHeight="0.0" minWidth="0.0"
-											prefHeight="100.0" prefWidth="160.0">
+										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
 											<children>
-												<VBox layoutX="-2.0" prefHeight="271.0"
-													prefWidth="316.0">
+												<VBox layoutX="-2.0" prefHeight="271.0" prefWidth="316.0">
 													<children>
-														<AnchorPane prefHeight="200.0"
-															prefWidth="200.0">
+														<AnchorPane prefHeight="200.0" prefWidth="200.0">
 															<children>
-																<TextField fx:id="songField" layoutX="150.0"
-																	layoutY="10.0" maxWidth="150.0" prefHeight="25.0"
-																	prefWidth="240.0" promptText="Required" />
-																<Label layoutX="20.0" layoutY="12.0"
-																	text="Song Name*" />
+																<TextField fx:id="songField" layoutX="150.0" layoutY="10.0" maxWidth="150.0" prefHeight="25.0" prefWidth="240.0" promptText="Required" />
+																<Label layoutX="20.0" layoutY="12.0" text="Song Name*" />
 															</children>
 														</AnchorPane>
-														<AnchorPane prefHeight="200.0"
-															prefWidth="200.0">
+														<AnchorPane prefHeight="200.0" prefWidth="200.0">
 															<children>
-																<TextField fx:id="artistField" layoutX="150.0"
-																	layoutY="10.0" maxWidth="150.0" prefHeight="25.0"
-																	prefWidth="240.0" promptText="Required" />
-																<Label layoutX="20.0" layoutY="12.0"
-																	text="Artist Name*" />
+																<TextField fx:id="artistField" layoutX="150.0" layoutY="10.0" maxWidth="150.0" prefHeight="25.0" prefWidth="240.0" promptText="Required" />
+																<Label layoutX="20.0" layoutY="12.0" text="Artist Name*" />
 															</children>
 														</AnchorPane>
-														<AnchorPane prefHeight="200.0"
-															prefWidth="200.0">
+														<AnchorPane prefHeight="200.0" prefWidth="200.0">
 															<children>
 																<Label layoutX="20.0" layoutY="12.0" text="Album" />
-																<TextField fx:id="albumField" layoutX="150.0"
-																	layoutY="10.0" maxWidth="150.0" prefHeight="25.0"
-																	prefWidth="240.0" />
+																<TextField fx:id="albumField" layoutX="150.0" layoutY="10.0" maxWidth="150.0" prefHeight="25.0" prefWidth="240.0" />
 															</children>
 														</AnchorPane>
-														<AnchorPane prefHeight="200.0"
-															prefWidth="200.0">
+														<AnchorPane prefHeight="200.0" prefWidth="200.0">
 															<children>
-																<TextField fx:id="yearField" layoutX="150.0"
-																	layoutY="10.0" maxWidth="150.0" prefHeight="25.0"
-																	prefWidth="240.0" />
+																<TextField fx:id="yearField" layoutX="150.0" layoutY="10.0" maxWidth="150.0" prefHeight="25.0" prefWidth="240.0" />
 																<Label layoutX="20.0" layoutY="12.0" text="Year" />
 															</children>
 														</AnchorPane>
-														<AnchorPane prefHeight="200.0"
-															prefWidth="200.0">
+														<AnchorPane prefHeight="200.0" prefWidth="200.0">
 															<children>
-																<Button fx:id="applyButton" layoutX="125.0"
-																	layoutY="10.0" mnemonicParsing="false" text="Apply" />
+																<Button fx:id="applyButton" layoutX="125.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#handleApplyButton" text="Apply" />
 															</children>
 														</AnchorPane>
 													</children>
 												</VBox>
 											</children>
 										</AnchorPane>
-										<AnchorPane minHeight="0.0" minWidth="0.0"
-											prefHeight="100.0" prefWidth="160.0">
+										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
 											<children>
-												<Button fx:id="addButton" layoutX="50.0"
-													layoutY="35.0" mnemonicParsing="false" text="Add" />
-												<Button fx:id="deleteButton" layoutX="200.0"
-													layoutY="35.0" mnemonicParsing="false" text="Delete" />
+												<Button fx:id="addButton" layoutX="50.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#handleAddButton" text="Add" />
+												<Button fx:id="deleteButton" layoutX="200.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#handleDeleteButton" text="Delete" />
 											</children>
 										</AnchorPane>
 									</items>
