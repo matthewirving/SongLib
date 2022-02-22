@@ -216,7 +216,7 @@ public class SongLibController {
     private boolean isRepeat() {
     	for(ListEntry en : masterList)
     	{
-    		if(en.getArtistName().trim().equalsIgnoreCase(artistField.getText().trim()) && en.getSongName().trim().equalsIgnoreCase(songField.getText().trim()) && en.getAlbumName().trim().equalsIgnoreCase(albumField.getText().trim()) && en.getAlbumYear().trim().equalsIgnoreCase(yearField.getText().trim())) {
+    		if(en.getArtistName().trim().equalsIgnoreCase(artistField.getText().trim()) && en.getSongName().trim().equalsIgnoreCase(songField.getText().trim())) {
     			return true;
     		}
     	}
