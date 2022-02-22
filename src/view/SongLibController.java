@@ -28,6 +28,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SongLibController {
 
@@ -48,9 +50,6 @@ public class SongLibController {
 
     @FXML
     private ListView<String> listView;
-
-    @FXML
-    private TextField searchField;
 
     @FXML
     private TextField songField;
@@ -123,18 +122,20 @@ public class SongLibController {
     			Alert a = new Alert(AlertType.WARNING);
     			a.setContentText("Unrecognized Character.");
     			a.show();
-    		}
-    		else if(isRepeat()) {
+    		} else if(!onlyDigits(yearField.getText().trim())){
     			
-    			Alert a = new Alert(AlertType.ERROR, "Songs cannot share the same Name and Artist as one already on the list");
+    			Alert a = new Alert(AlertType.ERROR, "Please enter a valid year; a valid entry contains only integers with no other characters");
     			a.show();
+    			
     		} else {
     			
     			Alert a = new Alert(AlertType.CONFIRMATION, "Are you sure you want to make these edits to the selected song?", ButtonType.YES, ButtonType.NO);
     			
+    			
+    			
     			ButtonType result = a.showAndWait().orElse(ButtonType.NO);
     			if(ButtonType.YES.equals(result)) {
-    				System.out.println(entry);
+    				
     				int currIndex = listView.getSelectionModel().getSelectedIndex();
     				ListEntry temp = new ListEntry(songField.getText().trim(), artistField.getText().trim(), albumField.getText().trim(), yearField.getText().trim());
     				masterList.set(currIndex, temp);
@@ -166,6 +167,11 @@ public class SongLibController {
     			
     			Alert a = new Alert(AlertType.ERROR, "Songs cannot share the same song and artist name as one already on the list");
     			a.show();
+    		} else if(!onlyDigits(yearField.getText().trim())){
+    			
+    			Alert a = new Alert(AlertType.ERROR, "Please enter a valid year; a valid entry contains only integers with no other characters");
+    			a.show();
+    			
     		} else {
     			
     			Alert a = new Alert(AlertType.CONFIRMATION, "Are you sure you want to add this song to your library?", ButtonType.YES, ButtonType.NO);
@@ -210,7 +216,7 @@ public class SongLibController {
     private boolean isRepeat() {
     	for(ListEntry en : masterList)
     	{
-    		if(en.getArtistName().trim().equalsIgnoreCase(artistField.getText().trim()) && en.getSongName().trim().equalsIgnoreCase(songField.getText().trim())) {
+    		if(en.getArtistName().trim().equalsIgnoreCase(artistField.getText().trim()) && en.getSongName().trim().equalsIgnoreCase(songField.getText().trim()) && en.getAlbumName().trim().equalsIgnoreCase(albumField.getText().trim()) && en.getAlbumYear().trim().equalsIgnoreCase(yearField.getText().trim())) {
     			return true;
     		}
     	}
@@ -304,6 +310,19 @@ public class SongLibController {
 		
 	}
 	
+	public static boolean onlyDigits(String str){
+		
+		String regex = "[0-9]+";
+		
+		Pattern p = Pattern.compile(regex);
+		
+		if(str.equals(null) || str.equals(""))
+			return true;
+		
+		Matcher m = p.matcher(str);
+		
+		return m.matches();
+	}
 }
 
     
