@@ -104,6 +104,11 @@ public class SongLibController {
     		masterList.remove(currIndex);
     		updateList();
     		try {
+    		if(currIndex == masterList.size())
+    		{
+    			listView.getSelectionModel().select(currIndex - 1);
+    		}
+    			
     		listView.getSelectionModel().select(currIndex);
     		
     		} catch (IndexOutOfBoundsException ex) {
